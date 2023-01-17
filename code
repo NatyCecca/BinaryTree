@@ -1,0 +1,38 @@
+def Binary_search (array, lowestIndexInArray, high, E):
+
+    #recursive method
+
+    if high >= lowestIndexInArray:
+
+        #mid index
+        mid = (high + lowestIndexInArray) // 2
+
+# If the element is present at the middle index, return the index as the answer.
+        if array[mid] == E:
+            return mid 
+ 
+# If element is smaller than the middle element,recursively checking the left sub array.
+
+        elif array[mid] > E:
+            return Binary_search(array, lowestIndexInArray, mid - 1, E)
+
+        # Else recursively checking the right sub array.
+        else:
+            return Binary_search (array, mid + 1, high, E)
+
+     # As the element is not present in the array, return -1.
+    else:
+        return -1
+
+if __name__ == "__main__":
+    array = [20, 26, 57, 80, 90, 120, 140, 345, 6578, 7654,]
+    E = 120
+    lowestIndexInArray = 0
+    high = len(array) - 1
+
+index = Binary_search (array, lowestIndexInArray, high, E)
+
+if index != -1:
+        print(f"Element {E} is found in the array at index", str(index))
+else:
+        print(f"Element {E} is not present in the array.")
